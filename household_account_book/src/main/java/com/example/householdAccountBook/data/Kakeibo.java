@@ -62,14 +62,14 @@ public class Kakeibo {
 		this.account = account;
 	}
 
-	@JsonProperty("accountdata")
-	public String getAccountdata() {
+	@JsonProperty("accountdate")
+	public String getAccountdate() {
 		return accountdate;
 	}
 
-	@JsonProperty("accountdata")
-	public void setAccountdata(String accountdata) {
-		this.accountdate = accountdata;
+	@JsonProperty("accountdate")
+	public void setAccountdate(String accountdate) {
+		this.accountdate = accountdate;
 	}
 
 	@JsonAnyGetter

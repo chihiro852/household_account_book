@@ -13,17 +13,17 @@ import lombok.Data;
 
 @Data
 public class KakeiboList {
-	@JsonProperty("kakeibolist")
+	@JsonProperty("userslist")
 	private List<Kakeibo> kakeibolist;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
-	@JsonProperty("kakeibolist")
+	@JsonProperty("userslist")
 	public List<Kakeibo> getKakeibolist() {
 		return kakeibolist;
 	}
 
-	@JsonProperty("kakeibolist")
+	@JsonProperty("userslist")
 	public void setKakeibolist(List<Kakeibo> kakeibolist) {
 		this.kakeibolist = kakeibolist;
 	}
