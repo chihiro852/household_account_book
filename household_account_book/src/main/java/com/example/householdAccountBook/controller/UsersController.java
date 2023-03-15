@@ -27,8 +27,9 @@ public class UsersController {
 		return "users.html";
 	}
 
-	@PostMapping("")
-	public String doPost(@RequestParam("${user.userid}") String str1, Model model) {
+	@PostMapping("/kakeibo/getaccount")
+	public String doPost(@RequestParam("selecteduser") int int1, Model model)
+			throws JsonMappingException, JsonProcessingException {
 		return "account.html";
 	}
 }

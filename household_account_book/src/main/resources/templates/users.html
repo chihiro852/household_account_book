@@ -7,10 +7,9 @@
 </head>
 
 <body>
-	<form th:action="users.html">
-		<h1>家計簿ユーザー選択</h1>
-		<span>ユーザ：</span>
-		<select name="selecteduser" id="selecteduser">
+	<form th:action="getaccount" method="get">
+		<span>ユーザ選択</span>
+		<select name="p1" id="selecteduser">
 			<option th:each="user : ${userslist}" th:value="${user.userid}" th:inline="text">[[${user.usernm}]]</option>
 		</select>
 		<br>

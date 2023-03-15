@@ -20,7 +20,7 @@ public class UsersService {
 	public UsersList doGet() throws JsonMappingException, JsonProcessingException {
 		UsersList usersList = new UsersList();
 
-		usersList = usersRepository.doGet();
+		usersList = usersRepository.getUsers();
 
 		return usersList;
 	}

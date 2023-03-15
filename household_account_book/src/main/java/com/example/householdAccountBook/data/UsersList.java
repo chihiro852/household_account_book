@@ -16,7 +16,7 @@ public class UsersList {
 	@JsonProperty("userslist")
 	private List<Users> usersList;
 	@JsonIgnore
-	private Map<String, Object> additionalProperties = new LinkedHashMap<>();
+	private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
 	@JsonProperty("userslist")
 	public List<Users> getUsersList() {
