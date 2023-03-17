@@ -10,30 +10,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Users {
 	@JsonProperty("userid")
-	private int userid;
+	private int userId;
 	@JsonProperty("usernm")
-	private String usernm;
+	private String userNm;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
 	@JsonProperty("userid")
-	public int getUserid() {
-		return userid;
+	public int getUserId() {
+		return userId;
 	}
 
 	@JsonProperty("userid")
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	@JsonProperty("usernm")
-	public String getUsernm() {
-		return usernm;
+	public String getUserNm() {
+		return userNm;
 	}
 
 	@JsonProperty("usernm")
-	public void setUsernm(String usernm) {
-		this.usernm = usernm;
+	public void setUserNm(String userNm) {
+		this.userNm = userNm;
 	}
 
 	@JsonAnyGetter

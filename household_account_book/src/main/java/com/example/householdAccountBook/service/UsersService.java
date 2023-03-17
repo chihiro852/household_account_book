@@ -10,17 +10,17 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 @Service
 public class UsersService {
-	public final UsersRepository usersRepository;
+	private final UsersRepository usersRepository;
 
 	@Autowired
 	public UsersService(UsersRepository usersRepository) {
 		this.usersRepository = usersRepository;
 	}
 
-	public UsersList doGet() throws JsonMappingException, JsonProcessingException {
+	public UsersList getUsers(int userId) throws JsonMappingException, JsonProcessingException {
 		UsersList usersList = new UsersList();
 
-		usersList = usersRepository.getUsers();
+		usersList = usersRepository.getUsers(userId);
 
 		return usersList;
 	}

@@ -9,8 +9,9 @@
 <body>
 	<form th:action="getaccount" method="get">
 		<span>ユーザ選択</span>
-		<select name="p1" id="selecteduser">
-			<option th:each="user : ${userslist}" th:value="${user.userid}" th:inline="text">[[${user.usernm}]]</option>
+		<select name="p1">
+			<option th:each="user : ${userslist}" th:value="${user.userId}" th:inline="text">
+				[[${user.userId}]]:[[${user.userNm}]]</option>
 		</select>
 		<br>
 		<input type="submit" value="家計簿へ"></input>

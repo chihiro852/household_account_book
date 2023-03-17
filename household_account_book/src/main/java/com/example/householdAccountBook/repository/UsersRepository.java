@@ -11,14 +11,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Repository
 public class UsersRepository {
-	public UsersList getUsers() throws JsonMappingException, JsonProcessingException {
-		String url = "https://1l9qmgyfm5.execute-api.ap-northeast-1.amazonaws.com/deafult/kakeibo/getusers";
+	public UsersList getUsers(int userId) throws JsonMappingException, JsonProcessingException {
+		String url = "https://1l9qmgyfm5.execute-api.ap-northeast-1.amazonaws.com/deafult/kakeibo/getusers?p1="
+				+ userId;
 
-		RestTemplate restTemplate = new RestTemplate();
+		RestTemplate rest = new RestTemplate();
 
-		ResponseEntity<String> res = restTemplate.getForEntity(url, String.class);
+		ResponseEntity<String> response = rest.getForEntity(url, String.class);
 
-		String json = res.getBody();
+		String json = response.getBody();
 
 		ObjectMapper mapper = new ObjectMapper();
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>一覧</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<p th:each="user : ${userList}" th:value="${user.userId}">[[${user.userNm}]]さんの家計簿</p>
+	<form th:action="setaccount" method="get">
+		<table>
+			<tr>
+				<th>編集</th>
+				<th>日付</th>
+				<th>用途</th>
+				<th>金額</th>
+			</tr>
+			<tr th:each="table : ${kakeiboList}">
+				<td><button type="submit" th:value="${table.id}" name="p1">修正</td>
+				<input type="hidden" th:value="${table.userId}" name="p2">
+				<td>[[${table.accountDate}]]<input type="hidden" th:value="${table.accountDate}" name="p5"></td>
+				<td>[[${table.account}]]<input type="hidden" th:value="${table.account}" name="p4"></td>
+				<td>[[${table.amount}]]<input type="hidden" th:value="${table.amount}" name="p3"></td>
+			</tr>
+			<tr>
+				<td><button type="submit" th:value="0" name="p2">新規</td>
+			</tr>
+			<tr>
+				<td>合計</td>
+				<td></td>
+				<td></td>
+				<td th:text="${total}"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+</html>

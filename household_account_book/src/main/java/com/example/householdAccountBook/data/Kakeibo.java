@@ -12,13 +12,13 @@ public class Kakeibo {
 	@JsonProperty("id")
 	private int id;
 	@JsonProperty("userid")
-	private int userid;
+	private int userId;
 	@JsonProperty("amount")
 	private int amount;
 	@JsonProperty("account")
 	private String account;
 	@JsonProperty("accountdate")
-	private String accountdate;
+	private String accountDate;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
@@ -33,13 +33,13 @@ public class Kakeibo {
 	}
 
 	@JsonProperty("userid")
-	public int getUserid() {
-		return userid;
+	public int getUserId() {
+		return userId;
 	}
 
 	@JsonProperty("userid")
-	public void setUserid(int userid) {
-		this.userid = userid;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	@JsonProperty("amount")
@@ -63,13 +63,13 @@ public class Kakeibo {
 	}
 
 	@JsonProperty("accountdate")
-	public String getAccountdate() {
-		return accountdate;
+	public String getAccountDate() {
+		return accountDate;
 	}
 
 	@JsonProperty("accountdate")
-	public void setAccountdate(String accountdate) {
-		this.accountdate = accountdate;
+	public void setAccountDate(String accountDate) {
+		this.accountDate = accountDate;
 	}
 
 	@JsonAnyGetter

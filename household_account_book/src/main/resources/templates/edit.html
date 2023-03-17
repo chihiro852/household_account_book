@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>家計簿編集</title>
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<form th:action="getaccount" method="get">
+		<input type="hidden" name="id">
+		<input type="hidden" name="userId">
+		日付<input type="text" name="accountDate"><br>
+		用途<input type="text" name="account"><br>
+		金額<input type="text" name="amount"><br>
+		<input type="submit" value="登録"></input>
+	</form>
+</body>
+
+</html>
