@@ -1,14 +1,37 @@
 package com.example.householdAccountBook.utility;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+public class DateFormatUtility {
+	// yyyyMMddをyyyy/MM/dd
+	public static String DateFormatSlash(String accountDate) {
+		String date = "";
+		if (accountDate == "") {
+			return date;
+		} else {
+			date = accountDate.substring(0, 4) + "/" + accountDate.substring(4, 6) + "/"
+					+ accountDate.substring(6, 8);
+			return date;
+		}
+	}
 
-public class DateTimeFormatUtility {
-	public String yyyyMMdd(String date) throws ParseException {
-		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+	// yyyy/MM/ddをyyyy-MM-dd
+	public static String DateFormatSlashToHyphen(String accountDate) {
+		String date = "";
+		if (accountDate == "") {
+			return date;
+		} else {
+			date = accountDate.replace("/", "-");
+			return date;
+		}
+	}
 
-		String changeDate = format.parse(date).toString();
-
-		return changeDate;
+	// yyyy-MM-ddをyyyyMMdd
+	public static String DateFormatHyphenToBlank(String accountDate) {
+		String date = "";
+		if (accountDate == "") {
+			return date;
+		} else {
+			date = accountDate.replace("-", "");
+			return date;
+		}
 	}
 }
