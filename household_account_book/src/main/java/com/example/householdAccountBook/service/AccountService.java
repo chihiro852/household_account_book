@@ -7,6 +7,7 @@ import com.example.householdAccountBook.data.KakeiboList;
 import com.example.householdAccountBook.data.UsersList;
 import com.example.householdAccountBook.repository.AccountRepository;
 import com.example.householdAccountBook.repository.UsersRepository;
+import com.example.householdAccountBook.utility.DateFormatUtility;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 
@@ -29,21 +30,32 @@ public class AccountService {
 		return usersList;
 	}
 
-	public KakeiboList getKakeibo(int p1) throws JsonMappingException, JsonProcessingException {
+	public KakeiboList getKakeibo(int userId) throws JsonMappingException, JsonProcessingException {
 		KakeiboList kakeiboList = new KakeiboList();
 
-		kakeiboList = accountRepository.getKakeiboList(p1, 0);
+		kakeiboList = accountRepository.getKakeiboList(userId, 0);
+
+		int size = kakeiboList.getKakeibolist().size();
+
+		// yyyyMMddをyyyy/MM/ddに変換する
+		for (int i = 0; i < size; i++) {
+			String strDate = kakeiboList.getKakeibolist().get(i).getAccountDate();
+
+			String dateTime = DateFormatUtility.DateFormatSlash(strDate);
+
+			kakeiboList.getKakeibolist().get(i).setAccountDate(dateTime);
+		}
 
 		return kakeiboList;
 	}
 
-	public int total(int p1) throws JsonMappingException, JsonProcessingException {
+	public int total(int userId) throws JsonMappingException, JsonProcessingException {
 		int result = 0;
 
-		int size = getKakeibo(p1).getKakeibolist().size();
+		int size = getKakeibo(userId).getKakeibolist().size();
 
 		for (int i = 0; i < size; i++) {
-			result = result + getKakeibo(p1).getKakeibolist().get(i).getAmount();
+			result = result + getKakeibo(userId).getKakeibolist().get(i).getAmount();
 		}
 
 		return result;

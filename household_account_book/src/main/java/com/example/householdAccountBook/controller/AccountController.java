@@ -3,7 +3,7 @@ package com.example.householdAccountBook.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.householdAccountBook.service.AccountService;
@@ -19,12 +19,14 @@ public class AccountController {
 		this.accountService = accountService;
 	}
 
-	@GetMapping("kakeibo/getaccount")
-	public String doGet(@RequestParam("p1") int p1, Model model)
+	// users.htmlからの情報を受け取って、account.htmlを表示する
+	@PostMapping("kakeibo/getaccount")
+	public String doGet(@RequestParam("p1") int userId, Model model)
 			throws JsonMappingException, JsonProcessingException {
-		model.addAttribute("userList", accountService.getUsers(p1).getUsersList());
-		model.addAttribute("kakeiboList", accountService.getKakeibo(p1).getKakeibolist());
-		model.addAttribute("total", accountService.total(p1));
+		model.addAttribute("userName", accountService.getUsers(userId).getUsersList().get(0).getUserNm());
+		model.addAttribute("kakeiboList", accountService.getKakeibo(userId).getKakeibolist());
+		model.addAttribute("userId", userId);
+		model.addAttribute("total", accountService.total(userId));
 		return "account.html";
 	}
 }

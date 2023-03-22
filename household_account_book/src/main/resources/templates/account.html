@@ -7,33 +7,41 @@
 </head>
 
 <body>
-	<p th:each="user : ${userList}" th:value="${user.userId}">[[${user.userNm}]]さんの家計簿</p>
-	<form th:action="setaccount" method="get">
-		<table>
-			<tr>
-				<th>編集</th>
-				<th>日付</th>
-				<th>用途</th>
-				<th>金額</th>
-			</tr>
-			<tr th:each="table : ${kakeiboList}">
-				<td><button type="submit" th:value="${table.id}" name="p1">修正</td>
+	<p th:text="${userName} + さんの家計簿" inline="text"></p>
+	<table>
+		<tr>
+			<th>編集</th>
+			<th>日付</th>
+			<th>用途</th>
+			<th>金額</th>
+		</tr>
+		<tr th:each="table : ${kakeiboList}">
+			<form th:action="editAccount" method="post">
+				<td><button type="submit">修正</td>
+				<input type="hidden" th:value="${table.id}" name="p1">
 				<input type="hidden" th:value="${table.userId}" name="p2">
 				<td>[[${table.accountDate}]]<input type="hidden" th:value="${table.accountDate}" name="p5"></td>
 				<td>[[${table.account}]]<input type="hidden" th:value="${table.account}" name="p4"></td>
 				<td>[[${table.amount}]]<input type="hidden" th:value="${table.amount}" name="p3"></td>
-			</tr>
-			<tr>
-				<td><button type="submit" th:value="0" name="p2">新規</td>
-			</tr>
-			<tr>
-				<td>合計</td>
-				<td></td>
-				<td></td>
-				<td th:text="${total}"></td>
-			</tr>
-		</table>
-	</form>
+			</form>
+		</tr>
+		<tr>
+			<form th:action="editAccount" method="post">
+				<td><button type="submit">新規</td>
+				<input type="hidden" th:value="0" name="p1">
+				<input type="hidden" th:value="${userId}" name="p2">
+				<input type="hidden" th:value="0" name="p3">
+				<input type="hidden" name="p4">
+				<input type="hidden" name="p5">
+			</form>
+		</tr>
+		<tr>
+			<td>合計</td>
+			<td></td>
+			<td></td>
+			<td th:text="${total}"></td>
+		</tr>
+	</table>
 </body>
 
 </html>
