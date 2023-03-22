@@ -7,12 +7,12 @@
 </head>
 
 <body>
-	<form th:action="getaccount" method="get">
-		<input type="hidden" name="id">
-		<input type="hidden" name="userId">
-		日付<input type="text" name="accountDate"><br>
-		用途<input type="text" name="account"><br>
-		金額<input type="text" name="amount"><br>
+	<form th:action="setaccount" method="post">
+		<input type="hidden" th:value="${id}" name="p1">
+		<input type="hidden" th:value="${userId}" name="p2">
+		日付<input type="date" th:value="${accountDate}" name="p5"><br>
+		用途<input type="text" th:value="${account}" name="p4"><br>
+		金額<input type="text" th:value="${amount}" name="p3"><br>
 		<input type="submit" value="登録"></input>
 	</form>
 </body>
